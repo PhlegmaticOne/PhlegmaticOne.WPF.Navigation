@@ -1,0 +1,1 @@
+# PhlegmaticOne.WPF.Navigation
