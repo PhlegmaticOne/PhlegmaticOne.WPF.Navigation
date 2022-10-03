@@ -37,8 +37,9 @@ public class NavigationBuilder
     /// <summary>
     /// Specifies to use default navigation represented by INavigationService interface
     /// </summary>
+    /// <param name="viewModelLifetime">Lifetime of ApplicationViewModels wil be created</param>
     /// <exception cref="NavigationException">Throwed if navigation has already configured. It may be because of calling this method twice as well as previous UseChainNavigation method calling</exception>
-    public void UseDefaultNavigation()
+    public void UseDefaultNavigation(ServiceLifetime viewModelLifetime = ServiceLifetime.Singleton)
     {
         if (_isDefaultNavigationConfigured)
         {
@@ -47,15 +48,16 @@ public class NavigationBuilder
 
         AddDefaultNavigation();
 
-        AddApplicationViewModels(_viewModelsAssembly);
+        AddApplicationViewModels(_viewModelsAssembly, viewModelLifetime);
 
         _isDefaultNavigationConfigured = true;
     }
     /// <summary>
     /// Specifies to use chained navigation represented by IChainNavigationService interface
     /// </summary>
+    /// <param name="viewModelLifetime">Lifetime of ApplicationViewModels wil be created</param>
     /// <exception cref="NavigationException">Throwed if navigation has already configured. It may be because of calling this method twice as well as previous UseDefaultNavigation method calling</exception>
-    public void UseChainNavigation()
+    public void UseChainNavigation(ServiceLifetime viewModelLifetime = ServiceLifetime.Singleton)
     {
         if (_isDefaultNavigationConfigured)
         {
@@ -64,7 +66,7 @@ public class NavigationBuilder
 
         AddChainNavigation();
 
-        AddApplicationViewModels(_viewModelsAssembly);
+        AddApplicationViewModels(_viewModelsAssembly, viewModelLifetime);
 
         _isDefaultNavigationConfigured = true;
     }
@@ -97,16 +99,31 @@ public class NavigationBuilder
         ViewModelsToViewsBinder.BindViewModelsToViews(application, _viewModelsAssembly, _viewsAssembly, binderInfoProvider);
     }
 
-    private void AddApplicationViewModels(Assembly viewModelsAssembly)
+    private void AddApplicationViewModels(Assembly viewModelsAssembly, ServiceLifetime viewModelLifetime)
     {
         var viewModelTypes = TypesGetter.GetApplicationViewModels(viewModelsAssembly);
 
         foreach (var viewModelType in viewModelTypes)
         {
-            _serviceCollection.AddSingleton(viewModelType);
-            _serviceCollection.AddSingleton(x =>
-                new NavigationConfigurationFactory(() =>
-                    (ApplicationBaseViewModel)x.GetRequiredService(viewModelType), viewModelType));
+            switch (viewModelLifetime)
+            {
+                case ServiceLifetime.Singleton or ServiceLifetime.Scoped:
+                {
+                    _serviceCollection.AddSingleton(viewModelType);
+                    _serviceCollection.AddSingleton(x =>
+                        new NavigationConfigurationFactory(() =>
+                            (ApplicationBaseViewModel)x.GetRequiredService(viewModelType), viewModelType));
+                    break;
+                }
+                case ServiceLifetime.Transient:
+                {
+                    _serviceCollection.AddTransient(viewModelType);
+                    _serviceCollection.AddTransient(x =>
+                        new NavigationConfigurationFactory(() =>
+                            (ApplicationBaseViewModel)x.GetRequiredService(viewModelType), viewModelType));
+                    break;
+                }
+            }
         }
     }
 

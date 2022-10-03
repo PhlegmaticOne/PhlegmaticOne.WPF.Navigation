@@ -15,7 +15,7 @@
     <PackageTags>WPF;MVVM;Navigation;ChainNavigation;ViewModels;ViewModel</PackageTags>
     <PackageReleaseNotes>Added types for navigation between ViewModels in WPF</PackageReleaseNotes>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>2.0.2</Version>
+    <Version>2.0.3</Version>
   </PropertyGroup>
 
   <ItemGroup>
