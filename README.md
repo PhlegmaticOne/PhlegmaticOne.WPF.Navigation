@@ -9,7 +9,7 @@
 
 ## Installation
 ```
-PM> NuGet\Install-Package PhlegmaticOne.WPF.Navigation -Version 2.0.2
+PM> NuGet\Install-Package PhlegmaticOne.WPF.Navigation -Version 2.0.3
 ```
 # Usage
 
@@ -353,6 +353,7 @@ private void AddNavigation(IServiceCollection serviceCollection)
     serviceCollection.AddNavigation(typeof(HomeViewModel).Assembly, typeof(HomeView).Assembly, b =>
     {
         b.UseDefaultNavigation();
+        //or b.UseDefaultNavigation(ServiceLifetime.Transient);
         b.BindViewModelsToViews(Current, bindingPolicy);
     });
 }
