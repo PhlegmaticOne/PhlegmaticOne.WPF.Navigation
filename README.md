@@ -435,5 +435,4 @@ And finally place it in MainWindow and set binding to ```CurrentViewModel``` in 
 
 ### And see working sample!
 
-![ezgif-3-971babd394](https://user-images.githubusercontent.com/73738250/193645413-9f1f1845-aaa1-449a-a75f-2a018e48b9dc.gif)
-
+![ezgif-3-a776a90eba](https://user-images.githubusercontent.com/73738250/193646204-225cb7c1-67e6-423d-b58e-39e760d672a6.gif)
