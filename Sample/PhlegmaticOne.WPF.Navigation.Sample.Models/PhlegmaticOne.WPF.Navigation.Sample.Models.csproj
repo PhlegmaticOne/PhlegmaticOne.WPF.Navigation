@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="PhlegmaticOne.WPF.Core" Version="1.1.1" />
+    <PackageReference Include="PropertyChanged.Fody" Version="4.0.3" />
+  </ItemGroup>
+
+</Project>

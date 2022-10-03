@@ -28,7 +28,7 @@ public class AttributesViewModelsToViewsBindingInfoProvider : IViewModelsToViews
 
             var viewNameStart = (attribute.ViewTypeNameStart is not null) ?
                 attribute.ViewTypeNameStart :
-                viewModelType.Name.SplitByUppercase().First();
+                GetViewModelNamePart(viewModelType.Name);
 
             var viewType = viewsTypes.FirstOrDefault(x => x.Name.StartsWith(viewNameStart));
 
@@ -41,5 +41,11 @@ public class AttributesViewModelsToViewsBindingInfoProvider : IViewModelsToViews
             result.Add(new(viewModelType, viewType));
         }
         return result;
+    }
+
+    private string GetViewModelNamePart(string viewModelName)
+    {
+        var splitted = viewModelName.SplitByUppercase().SkipLast(2);
+        return string.Concat(splitted);
     }
 }

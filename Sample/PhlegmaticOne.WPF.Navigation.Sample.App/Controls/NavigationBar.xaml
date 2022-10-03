@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="PhlegmaticOne.WPF.Navigation.Sample.App.Controls.NavigationBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PhlegmaticOne.WPF.Navigation.Sample.App.Controls"
+             xmlns:nav="clr-namespace:PhlegmaticOne.WPF.Navigation;assembly=PhlegmaticOne.WPF.Navigation"
+             xmlns:viewmodels="clr-namespace:PhlegmaticOne.WPF.Navigation.Sample.ViewModels;assembly=PhlegmaticOne.WPF.Navigation.Sample.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Width="300">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <StackPanel Orientation="Horizontal">
+                <Button Content="&lt;" Width="60" Command="{Binding MoveCommand}"
+                        CommandParameter="{x:Static nav:NavigationMoveDirection.Back}"
+                        IsEnabled="{Binding CanMoveBack}"/>
+                <Button Content="&gt;" Width="60" Command="{Binding MoveCommand}"
+                        CommandParameter="{x:Static nav:NavigationMoveDirection.Forward}"
+                        IsEnabled="{Binding CanMoveForward}"/>
+                <Button Content="Reset" Width="60" Command="{Binding ResetCommand}"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1">
+            <ScrollViewer>
+                <StackPanel>
+                    <Button Content="Home" Command="{Binding NavigateCommand}"
+                        CommandParameter="{x:Type viewmodels:HomeViewModel}"/>
+                    <Button Content="All schedules" Command="{Binding NavigateCommand}"
+                        CommandParameter="{x:Type viewmodels:AllSchedulesViewModel}"/>
+                    <Button Content="Create schedule" Command="{Binding NavigateCommand}"
+                        CommandParameter="{x:Type viewmodels:CreatingScheduleViewModel}"/>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</UserControl>
