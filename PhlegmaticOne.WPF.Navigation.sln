@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhlegmaticOne.WPF.Navigation", "PhlegmaticOne.WPF.Navigation\PhlegmaticOne.WPF.Navigation.csproj", "{79D986F1-BEC3-404C-8F58-D89FFDFCDB4D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2175CBDC-87A4-42F5-ABA2-9D761DB95EFC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhlegmaticOne.WPF.Navigation", "src\PhlegmaticOne.WPF.Navigation\PhlegmaticOne.WPF.Navigation.csproj", "{8AEF86A8-802E-4BB9-97F9-BB21BF6A6451}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,13 +13,16 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{79D986F1-BEC3-404C-8F58-D89FFDFCDB4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{79D986F1-BEC3-404C-8F58-D89FFDFCDB4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{79D986F1-BEC3-404C-8F58-D89FFDFCDB4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{79D986F1-BEC3-404C-8F58-D89FFDFCDB4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AEF86A8-802E-4BB9-97F9-BB21BF6A6451}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AEF86A8-802E-4BB9-97F9-BB21BF6A6451}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AEF86A8-802E-4BB9-97F9-BB21BF6A6451}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AEF86A8-802E-4BB9-97F9-BB21BF6A6451}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8AEF86A8-802E-4BB9-97F9-BB21BF6A6451} = {2175CBDC-87A4-42F5-ABA2-9D761DB95EFC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2266B988-38A1-4457-A7BA-87A132456E6B}

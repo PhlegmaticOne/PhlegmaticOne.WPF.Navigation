@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>WPF.Navigation</Title>
+    <Authors>Phlegmatic</Authors>
+    <Description>Navigation between ViewModels in WPF implementation</Description>
+    <PackageProjectUrl>https://github.com/PhlegmaticOne/PhlegmaticOne.WPF.Navigation</PackageProjectUrl>
+    <PackageIcon>Logo - Copy.png</PackageIcon>
+    <RepositoryUrl>https://github.com/PhlegmaticOne/PhlegmaticOne.WPF.Navigation.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>WPF;MVVM;Navigation;ChainNavigation;ViewModels;ViewModel</PackageTags>
+    <PackageReleaseNotes>Added types for navigation between ViewModels in WPF</PackageReleaseNotes>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Version>2.0.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\..\Downloads\Logo - Copy.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+    <PackageReference Include="PhlegmaticOne.WPF.Core" Version="1.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="PresentationFramework">
+      <HintPath>..\..\..\..\..\..\..\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\6.0.9\PresentationFramework.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
