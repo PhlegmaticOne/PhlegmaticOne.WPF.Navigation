@@ -427,9 +427,13 @@ And finally place it in MainWindow and set binding to ```CurrentViewModel``` in 
 </Grid>
 ```
 
-Now it should work!
+### Now it should work!
 
-See below!
+### See below!
 
 ![ezgif-3-971babd394](https://user-images.githubusercontent.com/73738250/193639808-e082cc91-3ba9-4ddd-a0ee-3266c66fb5c1.gif)
+
+### And see working sample!
+
+![ezgif-3-971babd394](https://user-images.githubusercontent.com/73738250/193645413-9f1f1845-aaa1-449a-a75f-2a018e48b9dc.gif)
 
