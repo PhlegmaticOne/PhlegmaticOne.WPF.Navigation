@@ -429,10 +429,6 @@ And finally place it in MainWindow and set binding to ```CurrentViewModel``` in 
 
 ### Now it should work!
 
-### See below!
-
-![ezgif-3-971babd394](https://user-images.githubusercontent.com/73738250/193639808-e082cc91-3ba9-4ddd-a0ee-3266c66fb5c1.gif)
-
-### And see working sample!
+### See working sample!
 
 ![ezgif-3-a776a90eba](https://user-images.githubusercontent.com/73738250/193646204-225cb7c1-67e6-423d-b58e-39e760d672a6.gif)
