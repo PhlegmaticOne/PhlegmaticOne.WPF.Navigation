@@ -17,10 +17,6 @@ PM> NuGet\Install-Package PhlegmaticOne.WPF.Navigation -Version 2.0.2
 
 In this guide will be shown how to setup application where Models, ViewModels and Views are placed in different projects just to show all moments in navigation setup
 
-## Application theme
-
-For sample let's write pre-alpha-demo-version of Schedule application
-
 ## Application initial structure
 
 ![image](https://user-images.githubusercontent.com/73738250/193564538-0b3a6c1f-c6b0-4c75-bb8f-c1ecc176bdd5.png)
@@ -381,3 +377,59 @@ serviceCollection.AddNavigation(typeof(HomeViewModel).Assembly, typeof(HomeView)
     b.BindViewModelsToViews(Current, bindingPolicy);
 });
 ```
+
+### Creating Navigation Control
+
+Last thing you need to do is create NavigationBar control and place it in MainWindow. It can look like this:
+
+```xaml
+<Grid Width="300">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="60"/>
+        <RowDefinition/>
+    </Grid.RowDefinitions>
+    <Grid Grid.Row="0">
+        <StackPanel Orientation="Horizontal">
+            <Button Content="&lt;" Width="60" Command="{Binding MoveCommand}"
+                    CommandParameter="{x:Static nav:NavigationMoveDirection.Back}"
+                    IsEnabled="{Binding CanMoveBack}"/>
+            <Button Content="&gt;" Width="60" Command="{Binding MoveCommand}"
+                    CommandParameter="{x:Static nav:NavigationMoveDirection.Forward}"
+                    IsEnabled="{Binding CanMoveForward}"/>
+            <Button Content="Reset" Width="60" Command="{Binding ResetCommand}"/>
+        </StackPanel>
+    </Grid>
+    <Grid Grid.Row="1">
+        <ScrollViewer>
+            <StackPanel>
+                <Button Content="Home" Command="{Binding NavigateCommand}"
+                    CommandParameter="{x:Type viewmodels:HomeViewModel}"/>
+                <Button Content="All schedules" Command="{Binding NavigateCommand}"
+                    CommandParameter="{x:Type viewmodels:AllSchedulesViewModel}"/>
+                <Button Content="Create schedule" Command="{Binding NavigateCommand}"
+                    CommandParameter="{x:Type viewmodels:CreatingScheduleViewModel}"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Grid>
+```
+
+And finally place it in MainWindow and set binding to ```CurrentViewModel``` in ```NavigationViewModel```
+
+```xaml
+<Grid Background="#181818">
+    <DockPanel>
+        <controls:NavigationBar DockPanel.Dock="Left" DataContext="{Binding NavigationViewModel}"/>
+        <Border>
+            <ContentPresenter Content="{Binding NavigationViewModel.CurrentViewModel}" Grid.Row="1"/>
+        </Border>
+    </DockPanel>
+</Grid>
+```
+
+Now it should work!
+
+See below!
+
+![ezgif-3-971babd394](https://user-images.githubusercontent.com/73738250/193639808-e082cc91-3ba9-4ddd-a0ee-3266c66fb5c1.gif)
+
