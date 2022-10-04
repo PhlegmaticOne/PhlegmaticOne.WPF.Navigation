@@ -13,11 +13,11 @@ public class CreatingScheduleViewModel : ApplicationBaseViewModel
 	{
 		_scheduleDataService = scheduleDataService;
 
-		CreateScheduleCommand = RelayCommandFactory.CreateCommand(CreateSchedule, _ => true); 
+		CreateScheduleCommand = RelayCommandFactory.CreateEmptyCommand(CreateSchedule); 
 	}
 
 	public IRelayCommand CreateScheduleCommand { get; }
-	private void CreateSchedule(object? _)
+	private void CreateSchedule()
 	{
 		var startHour = Random.Shared.Next(0, 12);
 		var endHour = Random.Shared.Next(startHour, 24);

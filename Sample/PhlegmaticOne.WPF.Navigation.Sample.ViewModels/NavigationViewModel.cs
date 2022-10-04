@@ -13,12 +13,12 @@ public class NavigationViewModel : ApplicationBaseViewModel, IDisposable
         _chainNavigationService.ViewModelChanged += ChainNavigationServiceOnViewModelChanged;
 
         MoveCommand = RelayCommandFactory
-            .CreateRequiredParameterCommand<NavigationMoveDirection>(Move, _ => true);
+            .CreateRequiredParameterCommand<NavigationMoveDirection>(Move);
 
         NavigateCommand = RelayCommandFactory
-            .CreateRequiredParameterCommand<Type>(Navigate, _ => true);
+            .CreateRequiredParameterCommand<Type>(Navigate);
 
-        ResetCommand = RelayCommandFactory.CreateCommand(Reset, _ => true);
+        ResetCommand = RelayCommandFactory.CreateEmptyCommand(Reset);
 
         NavigateDefault();
     }
@@ -38,7 +38,7 @@ public class NavigationViewModel : ApplicationBaseViewModel, IDisposable
     {
         _chainNavigationService.NavigateTo(parameter);
     }
-    private void Reset(object? _)
+    private void Reset()
     {
         _chainNavigationService.Reset();
         NavigateDefault();

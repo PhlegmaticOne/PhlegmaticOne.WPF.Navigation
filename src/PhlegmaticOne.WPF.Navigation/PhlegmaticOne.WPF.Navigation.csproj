@@ -13,9 +13,9 @@
     <RepositoryUrl>https://github.com/PhlegmaticOne/PhlegmaticOne.WPF.Navigation.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>WPF;MVVM;Navigation;ChainNavigation;ViewModels;ViewModel</PackageTags>
-    <PackageReleaseNotes>Moved to WPF.Core v. 1.1.3</PackageReleaseNotes>
+    <PackageReleaseNotes>Moved to WPF.Core v. 1.1.4</PackageReleaseNotes>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>2.0.5</Version>
+    <Version>2.0.6</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,7 +27,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
-    <PackageReference Include="PhlegmaticOne.WPF.Core" Version="1.1.3" />
+    <PackageReference Include="PhlegmaticOne.WPF.Core" Version="1.1.4" />
   </ItemGroup>
 
   <ItemGroup>

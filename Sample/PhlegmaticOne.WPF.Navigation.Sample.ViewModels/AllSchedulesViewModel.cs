@@ -20,10 +20,10 @@ public class AllSchedulesViewModel : ApplicationBaseViewModel
 		_entityContainingViewModelsNavigationService = entityContainingViewModelsNavigationService;
 		Schedules = new();
 
-		SelectSchedulesCommand = RelayCommandFactory.CreateCommand(SelectSchedules, _ => true);
+		SelectSchedulesCommand = RelayCommandFactory.CreateEmptyCommand(SelectSchedules);
 
 		NavigateToScheduleCommand = RelayCommandFactory
-			.CreateRequiredParameterAsyncCommand<ScheduleModel>(NavigateToSchedule, _ => true);
+			.CreateRequiredParameterAsyncCommand<ScheduleModel>(NavigateToSchedule);
 
 		SelectSchedules();
 	}
@@ -36,7 +36,7 @@ public class AllSchedulesViewModel : ApplicationBaseViewModel
 			.From<ScheduleModel, ScheduleModel>()
 			.NavigateAsync<ScheduleViewModel>(scheduleModel);
 	}
-	private void SelectSchedules(object? _ = null)
+	private void SelectSchedules()
 	{
 		var selectResult = _scheduleDataService.GetAll();
 
