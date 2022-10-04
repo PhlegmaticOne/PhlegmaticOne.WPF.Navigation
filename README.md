@@ -9,7 +9,7 @@
 
 ## Installation
 ```
-PM> NuGet\Install-Package PhlegmaticOne.WPF.Navigation -Version 2.0.4
+PM> NuGet\Install-Package PhlegmaticOne.WPF.Navigation -Version 2.0.5
 ```
 # Usage
 
@@ -87,7 +87,7 @@ public class NavigationViewModel : ApplicationBaseViewModel, IDisposable
         _navigationService = navigationService;
         _navigationService.ViewModelChanged += NavigationService_ViewModelChanged;
 
-        NavigateCommand = RelayCommandFactory.CreateRequiredParameterCommand<Type>(Navigate, _ => true);
+        NavigateCommand = RelayCommandFactory.CreateRequiredParameterCommand<Type>(Navigate);
 
         Navigate(typeof(HomeViewModel));
     }
@@ -126,12 +126,12 @@ public class NavigationViewModel : ApplicationBaseViewModel, IDisposable
         _chainNavigationService.ViewModelChanged += ChainNavigationServiceOnViewModelChanged;
 
         MoveCommand = RelayCommandFactory
-            .CreateRequiredParameterCommand<NavigationMoveDirection>(Move, _ => true);
+            .CreateRequiredParameterCommand<NavigationMoveDirection>(Move);
 
         NavigateCommand = RelayCommandFactory
-            .CreateRequiredParameterCommand<Type>(Navigate, _ => true);
+            .CreateRequiredParameterCommand<Type>(Navigate);
 
-        ResetCommand = RelayCommandFactory.CreateCommand(Reset, _ => true);
+        ResetCommand = RelayCommandFactory.CreateEmptyCommand(Reset);
 
         NavigateDefault();
     }
@@ -151,7 +151,7 @@ public class NavigationViewModel : ApplicationBaseViewModel, IDisposable
     {
         _chainNavigationService.NavigateTo(parameter);
     }
-    private void Reset(object? _)
+    private void Reset()
     {
         _chainNavigationService.Reset();
         NavigateDefault();
@@ -192,7 +192,7 @@ public class NavigationViewModel : ApplicationBaseViewModel, IDisposable
 
 ## EntityContainingViewModelsNavigation
 
-In order to use this navigation you need to implement ```NavigationFactory<TFrom, TTo>```, they are used by ```EntityContainingViewModelsNavigationService``` during navigation process. Let's see example.
+In order to use this navigation you need to implement ```NavigationFactoryBase<TFrom, TTo>```, they are used by ```EntityContainingViewModelsNavigationService``` during navigation process. Let's see example.
 
 This example is not very useful, but is show the concept.
 
@@ -210,7 +210,7 @@ public class AllSchedulesViewModel : ApplicationBaseViewModel
       Schedules = new();
       ...
       NavigateToScheduleCommand = RelayCommandFactory
-        .CreateRequiredParameterAsyncCommand<ScheduleModel>(NavigateToSchedule, _ => true);
+        .CreateRequiredParameterAsyncCommand<ScheduleModel>(NavigateToSchedule);
     }
     public ObservableCollection<ScheduleModel> Schedules { get; }
     public IRelayCommand NavigateToScheduleCommand { get; }
