@@ -9,7 +9,7 @@
 
 ## Installation
 ```
-PM> NuGet\Install-Package PhlegmaticOne.WPF.Navigation -Version 2.0.2
+PM> NuGet\Install-Package PhlegmaticOne.WPF.Navigation -Version 2.0.4
 ```
 # Usage
 
@@ -42,8 +42,6 @@ Install in your Models project (if it exists):
 ## ViewModels
 
 ### Install this packages
-
-![image](https://user-images.githubusercontent.com/73738250/193579037-89ec9e4f-ef5a-4b85-ab4d-e75b79567098.png)
 
 - PropertyChanged.Fody - it allows not to call ```OnPropertyChanged``` method explicitly
 - PhlegmaticOne.WPF.Navigation (this package) - provides WPF navigation
@@ -353,6 +351,7 @@ private void AddNavigation(IServiceCollection serviceCollection)
     serviceCollection.AddNavigation(typeof(HomeViewModel).Assembly, typeof(HomeView).Assembly, b =>
     {
         b.UseDefaultNavigation();
+        //or b.UseDefaultNavigation(ServiceLifetime.Transient);
         b.BindViewModelsToViews(Current, bindingPolicy);
     });
 }
