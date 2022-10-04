@@ -9,7 +9,7 @@
 
 ## Installation
 ```
-PM> NuGet\Install-Package PhlegmaticOne.WPF.Navigation -Version 2.0.5
+PM> NuGet\Install-Package PhlegmaticOne.WPF.Navigation -Version 2.0.6
 ```
 # Usage
 
